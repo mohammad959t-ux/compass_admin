@@ -1,16 +1,14 @@
 import { env } from "./env.js";
 
-const defaultOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3001",
-  "https://compassdigitalservices.com",
-  "https://admin.compassdigitalservices.com"
-];
+const localOrigins = ["http://localhost:3000", "http://localhost:3001"];
+const productionOrigins = ["https://compassdigitalservices.com", "https://admin.compassdigitalservices.com"];
+const defaultOrigins = [...localOrigins, ...productionOrigins];
 
 export function getCorsOrigins() {
-  if (!env.CORS_ORIGINS) return defaultOrigins;
-  const parsed = env.CORS_ORIGINS.split(",")
-    .map((origin) => origin.trim())
-    .filter(Boolean);
-  return parsed.length > 0 ? parsed : defaultOrigins;
+  const parsed = env.CORS_ORIGINS
+    ? env.CORS_ORIGINS.split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean)
+    : [];
+  return Array.from(new Set([...defaultOrigins, ...parsed]));
 }
