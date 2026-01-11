@@ -21,6 +21,8 @@ export async function createProject(req: Request, res: Response) {
     category: req.body.category,
     summary: req.body.summary,
     results: toArray(req.body.results),
+    role: req.body.role,
+    outcome: req.body.outcome,
     status: req.body.status,
     owner: req.body.owner,
     budget: req.body.budget ? Number(req.body.budget) : undefined,

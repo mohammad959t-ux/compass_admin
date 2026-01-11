@@ -3,12 +3,14 @@ import mongoose, { Schema } from "mongoose";
 export type Setting = {
   minDepositPercent: number;
   featureFlags: Record<string, boolean>;
+  serviceCategoryCovers: Record<string, string>;
 };
 
 const SettingSchema = new Schema<Setting>(
   {
     minDepositPercent: { type: Number, required: true, default: 20 },
-    featureFlags: { type: Map, of: Boolean, default: {} }
+    featureFlags: { type: Map, of: Boolean, default: {} },
+    serviceCategoryCovers: { type: Map, of: String, default: {} }
   },
   {
     timestamps: true,

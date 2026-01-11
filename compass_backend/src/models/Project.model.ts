@@ -12,6 +12,8 @@ export type Project = {
   status?: ProjectStatus;
   owner?: string;
   budget?: number;
+  role?: string;
+  outcome?: string;
   coverUrl?: string;
 };
 
@@ -26,6 +28,8 @@ const ProjectSchema = new Schema<Project>(
     status: { type: String, enum: ["active", "paused", "complete"], default: "active" },
     owner: String,
     budget: Number,
+    role: String,
+    outcome: String,
     coverUrl: String
   },
   {

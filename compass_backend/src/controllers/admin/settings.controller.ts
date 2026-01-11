@@ -1,15 +1,6 @@
 import { type Request, type Response } from "express";
 
-import { env } from "../../config/env.js";
-import { SettingModel } from "../../models/index.js";
-
-async function getSettings() {
-  let settings = await SettingModel.findOne();
-  if (!settings) {
-    settings = await SettingModel.create({ minDepositPercent: env.MIN_DEPOSIT_PERCENT, featureFlags: {} });
-  }
-  return settings;
-}
+import { getSettings } from "../../services/settings.service.js";
 
 export async function fetchSettings(_req: Request, res: Response) {
   const settings = await getSettings();
@@ -23,6 +14,9 @@ export async function updateSettings(req: Request, res: Response) {
   }
   if (req.body.featureFlags) {
     settings.featureFlags = req.body.featureFlags;
+  }
+  if (req.body.serviceCategoryCovers) {
+    settings.serviceCategoryCovers = req.body.serviceCategoryCovers;
   }
   await settings.save();
   res.json(settings);
