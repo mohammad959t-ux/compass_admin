@@ -11,7 +11,14 @@ const envSchema = z
     CORS_ORIGINS: z.string().optional().or(z.literal("")),
     ADMIN_EMAIL: z.string().email().default("admin@compass.test"),
     ADMIN_PASSWORD: z.string().min(6).default("admin123"),
-    MIN_DEPOSIT_PERCENT: z.coerce.number().min(1).max(100).default(20)
+    MIN_DEPOSIT_PERCENT: z.coerce.number().min(1).max(100).default(20),
+    SMTP_HOST: z.string().optional().or(z.literal("")),
+    SMTP_PORT: z.coerce.number().optional(),
+    SMTP_USER: z.string().optional().or(z.literal("")),
+    SMTP_PASS: z.string().optional().or(z.literal("")),
+    SMTP_SECURE: z.string().optional().or(z.literal("")),
+    EMAIL_FROM: z.string().email().optional().or(z.literal("")),
+    EMAIL_TO: z.string().email().optional().or(z.literal(""))
   })
   .superRefine((values, ctx) => {
     if (values.NODE_ENV !== "test" && !values.MONGO_URI) {
