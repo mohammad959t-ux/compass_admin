@@ -4,7 +4,8 @@
   "workspaces": [
     "compass_backend",
     "packages/ui",
-    "compass_site"
+    "compass_site",
+    "compass_admin"
   ],
   "scripts": {
     "dev": "npm run dev --workspace compass_backend",

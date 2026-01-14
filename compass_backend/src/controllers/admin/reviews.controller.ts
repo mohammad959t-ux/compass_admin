@@ -24,3 +24,8 @@ export async function createReviewLink(req: Request, res: Response) {
   const token = await createReviewToken(orderId);
   res.status(201).json({ token: token.token, expiresAt: token.expiresAt });
 }
+
+export async function deleteReview(req: Request, res: Response) {
+  await ReviewModel.findByIdAndDelete(req.params.id);
+  res.json({ ok: true });
+}

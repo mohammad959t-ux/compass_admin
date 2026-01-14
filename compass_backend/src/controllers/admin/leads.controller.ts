@@ -15,3 +15,8 @@ export async function updateLead(req: Request, res: Response) {
   }
   res.json(lead);
 }
+
+export async function deleteLead(req: Request, res: Response) {
+  await LeadModel.findByIdAndDelete(req.params.id);
+  res.json({ ok: true });
+}

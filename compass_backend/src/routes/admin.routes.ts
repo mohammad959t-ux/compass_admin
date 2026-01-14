@@ -38,8 +38,8 @@ import {
   listCalendarEvents,
   updateCalendarEvent
 } from "../controllers/admin/calendar.controller.js";
-import { createReviewLink, listReviews, updateReview } from "../controllers/admin/reviews.controller.js";
-import { listLeads, updateLead } from "../controllers/admin/leads.controller.js";
+import { createReviewLink, deleteReview, listReviews, updateReview } from "../controllers/admin/reviews.controller.js";
+import { deleteLead, listLeads, updateLead } from "../controllers/admin/leads.controller.js";
 import { analyticsSnapshot } from "../controllers/admin/analytics.controller.js";
 import { fetchSettings, updateSettings } from "../controllers/admin/settings.controller.js";
 import { uploadFile } from "../controllers/admin/uploads.controller.js";
@@ -101,10 +101,12 @@ router.delete("/admin/calendar/:id", deleteCalendarEvent);
 
 router.get("/admin/reviews", listReviews);
 router.patch("/admin/reviews/:id", validate(updateReviewSchema), updateReview);
+router.delete("/admin/reviews/:id", deleteReview);
 router.post("/admin/review-links", createReviewLink);
 
 router.get("/admin/leads", listLeads);
 router.patch("/admin/leads/:id", validate(updateLeadSchema), updateLead);
+router.delete("/admin/leads/:id", deleteLead);
 
 router.get("/admin/analytics", rbac(["admin"]), analyticsSnapshot);
 router.get("/admin/settings", rbac(["admin"]), fetchSettings);
