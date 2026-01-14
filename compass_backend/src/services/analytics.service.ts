@@ -16,6 +16,15 @@ export async function getAnalyticsSnapshot() {
   const net = paidRevenue - expenses;
   const outstanding = Math.max(orderTotal - paidRevenue, 0);
 
+  console.log(`[Analytics Service] Snapshot calculated:`, {
+    orderTotal,
+    paidRevenue,
+    expenses,
+    calculatedRevenue: paidRevenue || orderTotal,
+    net,
+    outstanding
+  });
+
   return {
     revenue: paidRevenue || orderTotal,
     expenses,

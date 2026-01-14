@@ -1,4 +1,5 @@
 import { type Request, type Response } from "express";
+import mongoose from "mongoose";
 
 import { OrderModel, PaymentModel } from "../../models/index.js";
 import { nextOrderNumber } from "../../utils/orderNumber.js";
@@ -50,6 +51,9 @@ export async function deleteOrder(req: Request, res: Response) {
   const { id } = req.params;
   console.log(`[Orders] Attempting to delete order: ${id}`);
 
+  const ordersBefore = await OrderModel.countDocuments();
+  console.log(`[Orders] Orders in DB before deletion: ${ordersBefore}`);
+
   const order = await OrderModel.findById(id);
   if (!order) {
     console.warn(`[Orders] Order ${id} not found for deletion`);
@@ -57,12 +61,18 @@ export async function deleteOrder(req: Request, res: Response) {
     return;
   }
 
-  // Cascading delete for payments
-  const paymentResult = await PaymentModel.deleteMany({ orderId: id });
+  // Diagnostic: check payments for this order before
+  const paymentsStr = await PaymentModel.countDocuments({ orderId: id });
+  const paymentsObj = await PaymentModel.countDocuments({ orderId: new mongoose.Types.ObjectId(id) });
+  console.log(`[Orders] Diagnostic: payments found for order ${id} (str query): ${paymentsStr}, (obj query): ${paymentsObj}`);
+
+  // Cascading delete for payments using explicit ObjectId
+  const paymentResult = await PaymentModel.deleteMany({ orderId: new mongoose.Types.ObjectId(id) });
   console.log(`[Orders] Deleted ${paymentResult.deletedCount} associated payments for order ${id}`);
 
   await OrderModel.findByIdAndDelete(id);
-  console.log(`[Orders] Order ${id} deleted successfully from database`);
+  const ordersAfter = await OrderModel.countDocuments();
+  console.log(`[Orders] Order ${id} deleted successfully. Orders in DB after: ${ordersAfter}`);
 
   res.json({ ok: true });
 }
