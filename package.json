@@ -2,12 +2,17 @@
   "name": "compass-web",
   "private": true,
   "workspaces": [
-    "compass_backend"
+    "compass_backend",
+    "packages/ui",
+    "compass_site"
   ],
   "scripts": {
     "dev": "npm run dev --workspace compass_backend",
     "build": "npm run build --workspace compass_backend",
     "start": "npm run start --workspace compass_backend",
     "test": "npm run test --workspace compass_backend"
+  },
+  "dependencies": {
+    "resend": "^6.7.0"
   }
 }

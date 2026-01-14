@@ -12,6 +12,7 @@ const envSchema = z
     ADMIN_EMAIL: z.string().email().default("admin@compass.test"),
     ADMIN_PASSWORD: z.string().min(6).default("admin123"),
     MIN_DEPOSIT_PERCENT: z.coerce.number().min(1).max(100).default(20),
+    RESEND_API_KEY: z.string().optional().or(z.literal("")),
     SMTP_HOST: z.string().optional().or(z.literal("")),
     SMTP_PORT: z.coerce.number().optional(),
     SMTP_USER: z.string().optional().or(z.literal("")),
