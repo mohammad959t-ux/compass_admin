@@ -19,7 +19,8 @@ const envSchema = z
     SMTP_PASS: z.string().optional().or(z.literal("")),
     SMTP_SECURE: z.string().optional().or(z.literal("")),
     EMAIL_FROM: z.string().email().optional().or(z.literal("")),
-    EMAIL_TO: z.string().email().optional().or(z.literal(""))
+    EMAIL_TO: z.string().email().optional().or(z.literal("")),
+    EMAIL_LOGO_URL: z.string().url().optional().or(z.literal(""))
   })
   .superRefine((values, ctx) => {
     if (values.NODE_ENV !== "test" && !values.MONGO_URI) {
