@@ -49,6 +49,9 @@ export async function updateService(req: Request, res: Response) {
 }
 
 export async function deleteService(req: Request, res: Response) {
-  await ServiceModel.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+  console.log(`[Services] Deleting service: ${id}`);
+  await ServiceModel.findByIdAndDelete(id);
+  console.log(`[Services] Service ${id} deleted successfully`);
   res.json({ ok: true });
 }

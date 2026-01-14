@@ -5,6 +5,7 @@ import { slugify } from "../../utils/slugify.js";
 import { toArray } from "../../utils/payload.js";
 
 export async function listProjects(_req: Request, res: Response) {
+  console.log("[Projects] Listing all projects");
   const items = await ProjectModel.find().sort({ createdAt: -1 });
   res.json(items);
 }
@@ -48,6 +49,9 @@ export async function updateProject(req: Request, res: Response) {
 }
 
 export async function deleteProject(req: Request, res: Response) {
-  await ProjectModel.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+  console.log(`[Projects] Deleting project: ${id}`);
+  await ProjectModel.findByIdAndDelete(id);
+  console.log(`[Projects] Project ${id} deleted successfully`);
   res.json({ ok: true });
 }

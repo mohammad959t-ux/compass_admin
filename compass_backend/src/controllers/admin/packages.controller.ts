@@ -6,6 +6,7 @@ import { slugify } from "../../utils/slugify.js";
 import { toArray } from "../../utils/payload.js";
 
 export async function listPackages(_req: Request, res: Response) {
+  console.log("[Packages] Listing all packages");
   const items = await PackageModel.find().sort({ createdAt: -1 });
   res.json(items);
 }
@@ -48,6 +49,9 @@ export async function updatePackage(req: Request, res: Response) {
 }
 
 export async function deletePackage(req: Request, res: Response) {
-  await PackageModel.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+  console.log(`[Packages] Deleting package: ${id}`);
+  await PackageModel.findByIdAndDelete(id);
+  console.log(`[Packages] Package ${id} deleted successfully`);
   res.json({ ok: true });
 }

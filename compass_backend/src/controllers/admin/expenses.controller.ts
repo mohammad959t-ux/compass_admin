@@ -40,6 +40,9 @@ export async function updateExpense(req: Request, res: Response) {
 }
 
 export async function deleteExpense(req: Request, res: Response) {
-  await ExpenseModel.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+  console.log(`[Expenses] Deleting expense: ${id}`);
+  await ExpenseModel.findByIdAndDelete(id);
+  console.log(`[Expenses] Expense ${id} deleted successfully`);
   res.json({ ok: true });
 }

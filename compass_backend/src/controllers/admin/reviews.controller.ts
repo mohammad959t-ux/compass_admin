@@ -26,6 +26,9 @@ export async function createReviewLink(req: Request, res: Response) {
 }
 
 export async function deleteReview(req: Request, res: Response) {
-  await ReviewModel.findByIdAndDelete(req.params.id);
+  const { id } = req.params;
+  console.log(`[Reviews] Deleting review: ${id}`);
+  await ReviewModel.findByIdAndDelete(id);
+  console.log(`[Reviews] Review ${id} deleted successfully`);
   res.json({ ok: true });
 }

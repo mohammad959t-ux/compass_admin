@@ -4,6 +4,7 @@ import { LeadModel, ProjectModel } from "../../models/index.js";
 import { getAnalyticsSnapshot } from "../../services/analytics.service.js";
 
 export async function analyticsSnapshot(_req: Request, res: Response) {
+  console.log("[Analytics] Fetching analytics snapshot");
   const [snapshot, openLeads, activeProjects] = await Promise.all([
     getAnalyticsSnapshot(),
     LeadModel.countDocuments({ status: "new" }),
