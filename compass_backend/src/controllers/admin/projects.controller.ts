@@ -41,7 +41,8 @@ export async function createProject(req: Request, res: Response) {
     status: req.body.status,
     owner: req.body.owner,
     budget: req.body.budget ? Number(req.body.budget) : undefined,
-    coverUrl: req.body.coverUrl
+    coverUrl: req.body.coverUrl,
+    images: toArray(req.body.images)
   });
 
   res.status(201).json(project);
@@ -54,6 +55,7 @@ export async function updateProject(req: Request, res: Response) {
   if (update.results) update.results = toArray(update.results);
   if (update.resultsAr) update.resultsAr = toArray(update.resultsAr);
   if (update.resultsEn) update.resultsEn = toArray(update.resultsEn);
+  if (update.images) update.images = toArray(update.images);
   if (update.budget) update.budget = Number(update.budget);
 
   const project = await ProjectModel.findByIdAndUpdate(req.params.id, update, { new: true });

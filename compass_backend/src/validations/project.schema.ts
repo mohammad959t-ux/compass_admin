@@ -27,7 +27,8 @@ export const createProjectSchema = z.object({
     status: z.enum(["active", "paused", "complete"]).optional(),
     owner: z.string().optional(),
     budget: z.number().optional(),
-    coverUrl: z.string().url().optional()
+    coverUrl: z.string().url().optional(),
+    images: z.union([z.array(z.string()), z.string()]).optional()
   })
 });
 
@@ -58,6 +59,7 @@ export const updateProjectSchema = z.object({
     status: z.enum(["active", "paused", "complete"]).optional(),
     owner: z.string().optional(),
     budget: z.number().optional(),
-    coverUrl: z.string().url().optional()
+    coverUrl: z.string().url().optional(),
+    images: z.union([z.array(z.string()), z.string()]).optional()
   })
 });

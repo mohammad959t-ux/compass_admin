@@ -29,6 +29,7 @@ export type Project = {
   outcomeAr?: string;
   outcomeEn?: string;
   coverUrl?: string;
+  images?: string[];
 };
 
 const ProjectSchema = new Schema<Project>(
@@ -58,7 +59,8 @@ const ProjectSchema = new Schema<Project>(
     outcome: String,
     outcomeAr: String,
     outcomeEn: String,
-    coverUrl: String
+    coverUrl: String,
+    images: { type: [String], default: [] }
   },
   {
     timestamps: true,
