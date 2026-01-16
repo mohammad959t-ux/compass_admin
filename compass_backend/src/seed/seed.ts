@@ -44,14 +44,14 @@ export async function seedDefaults() {
       CalendarEventModel.countDocuments()
     ]);
 
-  if (serviceCount === 0) await ServiceModel.insertMany(seedServices);
-  if (projectCount === 0) await ProjectModel.insertMany(seedProjects);
-  if (packageCount === 0) await PackageModel.insertMany(seedPackages);
-  if (reviewCount === 0) await ReviewModel.insertMany(seedReviews);
-  if (leadCount === 0) await LeadModel.insertMany(seedLeads);
-  if (orderCount === 0) await OrderModel.insertMany(seedOrders);
-  if (expenseCount === 0) await ExpenseModel.insertMany(seedExpenses);
-  if (calendarCount === 0) await CalendarEventModel.insertMany(seedCalendar);
+  // if (serviceCount === 0) await ServiceModel.insertMany(seedServices);
+  // if (projectCount === 0) await ProjectModel.insertMany(seedProjects);
+  // if (packageCount === 0) await PackageModel.insertMany(seedPackages);
+  // if (reviewCount === 0) await ReviewModel.insertMany(seedReviews);
+  // if (leadCount === 0) await LeadModel.insertMany(seedLeads);
+  // if (orderCount === 0) await OrderModel.insertMany(seedOrders);
+  // if (expenseCount === 0) await ExpenseModel.insertMany(seedExpenses);
+  // if (calendarCount === 0) await CalendarEventModel.insertMany(seedCalendar);
 
   const settingsCount = await SettingModel.countDocuments();
   if (settingsCount === 0) {
