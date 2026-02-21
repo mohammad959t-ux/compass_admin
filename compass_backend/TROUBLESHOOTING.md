@@ -51,13 +51,12 @@ Tests  23 skipped (23)
 ## المشكلة 3: متغيرات البيئة لا تُقرأ 📝
 
 ### الأعراض:
-لا يتم استخدام `MONGO_URI` أو `CLOUDINARY_URL` في الاختبارات.
+?? ??? ??????? `MONGO_URI` ?? ?????????? ??? ??????? ??? ?????? ??? `UPLOADS_DIR`.
 
 ### الحل 1: استخدام متغيرات البيئة مباشرة
 ```powershell
 cd compass_backend
 $env:MONGO_URI="mongodb+srv://username:password@cluster.mongodb.net/compass_test"
-$env:CLOUDINARY_URL="cloudinary://..."
 npm test
 ```
 
@@ -65,7 +64,6 @@ npm test
 ```bash
 # compass_backend/.env.test
 MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/compass_test
-CLOUDINARY_URL=cloudinary://...
 JWT_SECRET=test-secret
 ```
 

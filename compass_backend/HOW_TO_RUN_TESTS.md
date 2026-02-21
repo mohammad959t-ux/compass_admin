@@ -25,9 +25,9 @@ npm test
 ```powershell
 cd compass_backend
 $env:MONGO_URI="mongodb+srv://mohammad95970:Aoo956930@cluster0.bacz36i.mongodb.net/compass_test?retryWrites=true&w=majority"
-$env:CLOUDINARY_URL="cloudinary://422434891756173:FwghIign9fP6LEVNCzEVyGroDJg@dqdmudhx9"
 npm test
 ```
+Uploads are stored under the local `UPLOADS_DIR` (defaults to `uploads`), so no cloud credentials are required for tests.
 
 ## الاختبارات المتاحة
 

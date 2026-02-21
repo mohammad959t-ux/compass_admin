@@ -17,7 +17,6 @@ try {
 
 # تعيين متغيرات البيئة
 $env:MONGO_URI = if ($env:MONGO_URI) { $env:MONGO_URI } else { "mongodb+srv://mohammad95970:Aoo956930@cluster0.bacz36i.mongodb.net/?retryWrites=true&w=majority" }
-$env:CLOUDINARY_URL = if ($env:CLOUDINARY_URL) { $env:CLOUDINARY_URL } else { "cloudinary://422434891756173:FwghIign9fP6LEVNCzEVyGroDJg@dqdmudhx9" }
 $env:JWT_SECRET = if ($env:JWT_SECRET) { $env:JWT_SECRET } else { "your-jwt-secret-here" }
 $env:NODE_ENV = if ($env:NODE_ENV) { $env:NODE_ENV } else { "development" }
 $env:PORT = if ($env:PORT) { $env:PORT } else { "4000" }

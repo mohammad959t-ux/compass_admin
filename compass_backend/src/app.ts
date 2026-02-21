@@ -9,6 +9,7 @@ import publicRoutes from "./routes/public.routes.js";
 import reviewLinksRoutes from "./routes/reviewLinks.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
+import { getUploadsDirectory, getUploadsEndpoint } from "./services/uploads.service.js";
 
 export function createApp() {
   const app = express();
@@ -29,6 +30,7 @@ export function createApp() {
   );
   app.use(express.json({ limit: "2mb" }));
   app.use(cookieParser());
+  app.use(getUploadsEndpoint(), express.static(getUploadsDirectory()));
 
   app.use(healthRoutes);
   app.use(authRoutes);
