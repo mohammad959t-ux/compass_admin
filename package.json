@@ -14,6 +14,10 @@
     "test": "npm run test --workspace compass_backend"
   },
   "dependencies": {
-    "resend": "^6.7.0"
+    "@esbuild/win32-x64": "^0.27.3",
+    "@tanstack/react-query": "^5.90.18",
+    "esbuild": "^0.27.3",
+    "resend": "^6.7.0",
+    "sonner": "^2.0.7"
   }
 }

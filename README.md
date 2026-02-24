@@ -17,8 +17,8 @@ Backend (optional for local API stubs):
 
 Backend environment:
 - Copy `backend/.env.example` to `backend/.env`
-- Set `MONGO_URI` and `CLOUDINARY_URL`
-- Optional: `ADMIN_EMAIL` and `ADMIN_PASSWORD`
+- Set `MONGO_URI`
+- Optional: `UPLOADS_DIR`, `UPLOADS_URL_PREFIX`, `ADMIN_EMAIL`, and `ADMIN_PASSWORD`
 
 Ports:
 - Marketing site: `http://localhost:3000`
