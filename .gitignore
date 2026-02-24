@@ -5,6 +5,7 @@ out
 .env.local
 .DS_Store
 compass_backend/dist
-compass_admin/
 compass_site/
 packages/
+site_build_debug_2.log
+upload_temp.mjs

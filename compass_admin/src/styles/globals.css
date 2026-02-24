@@ -1,0 +1,55 @@
+@import "../../../packages/ui/src/styles/theme.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1200px circle at top right, rgb(var(--color-accent-to) / 0.12), transparent 55%),
+    radial-gradient(900px circle at 10% 20%, rgb(var(--color-accent-from) / 0.14), transparent 50%),
+    rgb(var(--color-bg));
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: rgb(var(--color-text));
+}
+
+.admin-shell {
+  background:
+    radial-gradient(circle at top left, rgb(var(--color-accent-from) / 0.08), transparent 45%),
+    radial-gradient(circle at bottom right, rgb(var(--color-accent-to) / 0.08), transparent 45%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.auth-screen {
+  background:
+    linear-gradient(135deg, rgb(var(--color-text) / 0.06), transparent 60%),
+    radial-gradient(600px circle at 20% 0%, rgb(var(--color-accent-to) / 0.18), transparent 55%);
+}
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: rgb(var(--color-text));
+}
+
+.react-calendar__navigation button {
+  color: rgb(var(--color-text));
+}
+
+.react-calendar__tile {
+  border-radius: 10px;
+}
+
+.react-calendar__tile--active {
+  background: rgb(var(--color-text));
+  color: rgb(var(--color-bg));
+}
