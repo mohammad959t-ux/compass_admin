@@ -7,5 +7,6 @@ out
 compass_backend/dist
 compass_site/
 packages/
+!compass_admin/packages/
 site_build_debug_2.log
 upload_temp.mjs
